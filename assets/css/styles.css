@@ -3,20 +3,23 @@
    ===================================================== */
 
 :root {
-  --navy:        #1B2A4E;
-  --navy-dark:   #142039;
-  --navy-soft:   #2A3B65;
-  --gold:        #D4A24C;
-  --gold-light:  #E5BE74;
-  --gold-soft:   #F2E2BC;
-  --cream:       #FAF7EF;
-  --cream-warm:  #F4EFE2;
-  --ink:         #1A1A1A;
-  --muted:       #5C5C5C;
-  --line:        #E6E1D3;
+  /* Clara Excel Academy logo palette
+     Variable names kept (--navy / --gold) so the rest of the stylesheet
+     keeps working — they now point to brand greens, not navy/gold. */
+  --navy:        #0E2F1F;   /* deep brand green — like "CLARA" wordmark */
+  --navy-dark:   #061B11;   /* darker variant for hover/pressed */
+  --navy-soft:   #1A3F2A;   /* mid green for soft surfaces */
+  --gold:        #1FA94D;   /* PRIMARY bright leaf green — like "EXCEL ACADEMY" */
+  --gold-light:  #4FD376;   /* hover / glow */
+  --gold-soft:   #DDF1E1;   /* very light mint tint for icon backgrounds */
+  --cream:       #FFFFFF;   /* page background — clean white from the logo */
+  --cream-warm:  #F4F8F2;   /* alternate section background, very faint green tint */
+  --ink:         #0F1A14;   /* near-black with green undertone */
+  --muted:       #5A6B62;   /* secondary text */
+  --line:        #DDE7DF;   /* divider lines */
 
-  /* topic accent palette from Clara's brand system */
-  --c-green:  #1B5E3F;
+  /* topic accent palette (course tags) — kept distinct from brand green */
+  --c-green:  #0F6B3C;   /* deep emerald — Foundations tag */
   --c-pink:   #E8579A;
   --c-blue:   #1F6FB5;
   --c-purple: #6B4E9C;
@@ -26,9 +29,9 @@
   --radius-sm: 8px;
   --radius:    14px;
   --radius-lg: 22px;
-  --shadow-sm: 0 2px 8px rgba(20,32,57,.06);
-  --shadow:    0 12px 32px -12px rgba(20,32,57,.18);
-  --shadow-lg: 0 24px 60px -20px rgba(20,32,57,.28);
+  --shadow-sm: 0 2px 8px rgba(14,47,31,.06);
+  --shadow:    0 12px 32px -12px rgba(14,47,31,.18);
+  --shadow-lg: 0 24px 60px -20px rgba(14,47,31,.28);
 
   --max:       1180px;
   --gutter:    clamp(20px, 4vw, 40px);
@@ -138,7 +141,7 @@ ul { padding: 0; margin: 0; list-style: none; }
   background: rgba(250, 247, 239, .82);
   backdrop-filter: saturate(180%) blur(12px);
   -webkit-backdrop-filter: saturate(180%) blur(12px);
-  border-bottom: 1px solid rgba(20,32,57,.06);
+  border-bottom: 1px solid rgba(14,47,31,.06);
 }
 .nav-inner {
   display: flex;
@@ -152,6 +155,14 @@ ul { padding: 0; margin: 0; list-style: none; }
   gap: .65rem;
   font-weight: 700;
   color: var(--navy);
+  line-height: 1;
+}
+.brand-logo {
+  height: 44px;
+  width: auto;
+  display: block;
+  max-width: 220px;
+  object-fit: contain;
 }
 .brand-mark {
   width: 36px; height: 36px;
@@ -164,6 +175,13 @@ ul { padding: 0; margin: 0; list-style: none; }
   letter-spacing: .02em;
 }
 .brand-text { font-size: 1.02rem; letter-spacing: .01em; }
+
+.foot-trainer {
+  margin: 6px 0 0;
+  color: rgba(255,255,255,.55);
+  font-size: .82rem;
+  letter-spacing: .04em;
+}
 
 .nav-links {
   display: flex;
@@ -223,8 +241,8 @@ ul { padding: 0; margin: 0; list-style: none; }
 .hero {
   position: relative;
   background:
-    radial-gradient(circle at 80% 10%, rgba(212,162,76,.18), transparent 55%),
-    radial-gradient(circle at 10% 90%, rgba(229,190,116,.10), transparent 55%),
+    radial-gradient(circle at 80% 10%, rgba(31,169,77,.22), transparent 55%),
+    radial-gradient(circle at 10% 90%, rgba(79,211,118,.12), transparent 55%),
     linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
   color: #fff;
   padding-block: clamp(64px, 9vw, 110px) clamp(72px, 10vw, 130px);
@@ -313,7 +331,7 @@ ul { padding: 0; margin: 0; list-style: none; }
   padding: 8px 14px;
   border-radius: 999px;
   background: rgba(255,255,255,.06);
-  border: 1px solid rgba(212,162,76,.4);
+  border: 1px solid rgba(79,211,118,.45);
   color: #fff;
 }
 .dot {
@@ -329,7 +347,7 @@ ul { padding: 0; margin: 0; list-style: none; }
 .title-accent {
   position: relative;
   color: var(--navy);
-  background: linear-gradient(180deg, transparent 62%, rgba(212,162,76,.45) 62%);
+  background: linear-gradient(180deg, transparent 62%, rgba(79,211,118,.55) 62%);
   padding: 0 .12em;
 }
 
@@ -343,7 +361,7 @@ ul { padding: 0; margin: 0; list-style: none; }
   border-radius: 26px;
   overflow: hidden;
   border: 3px solid var(--gold);
-  box-shadow: var(--shadow-lg), 0 0 0 14px rgba(212,162,76,.10);
+  box-shadow: var(--shadow-lg), 0 0 0 14px rgba(31,169,77,.12);
   transform: rotate(-1.5deg);
   background: var(--navy-soft);
 }
@@ -702,7 +720,7 @@ ul { padding: 0; margin: 0; list-style: none; }
 }
 .client-grid li {
   background: rgba(255,255,255,.06);
-  border: 1px solid rgba(212,162,76,.35);
+  border: 1px solid rgba(79,211,118,.4);
   color: #fff;
   border-radius: var(--radius-sm);
   padding: 18px 14px;
@@ -786,7 +804,7 @@ ul { padding: 0; margin: 0; list-style: none; }
 }
 .contact-meta {
   background: rgba(255,255,255,.06);
-  border: 1px solid rgba(212,162,76,.3);
+  border: 1px solid rgba(79,211,118,.35);
   border-radius: var(--radius-lg);
   padding: 32px 28px;
   backdrop-filter: blur(8px);

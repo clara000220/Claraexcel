@@ -1,16 +1,21 @@
-# Clara Tan Chai Fang — Portfolio Website
+# Clara Excel Academy — Website
 
-Single-page static site for **Clara Tan Chai Fang**, HRDC-accredited Microsoft Excel, Power BI &amp; AI corporate trainer based in Kuala Lumpur, Malaysia.
+Single-page static site for **Clara Excel Academy** — HRDC-accredited Microsoft Excel, AI and Agentic AI training by **Clara Tan Chai Fang**, based in Kuala Lumpur, Malaysia.
 
-Built as plain HTML / CSS / vanilla JavaScript — no build step, no framework. Designed to be hosted on **GitHub Pages**.
+Tagline: **Excel · AI · Automation**.
 
-## Brand palette
+Built as plain HTML / CSS / vanilla JavaScript — no build step, no framework. Deploys to **GitHub Pages** or **Vercel** with zero config.
+
+## Brand palette (from the Clara Excel Academy logo)
 
 | Token | Hex | Use |
 |---|---|---|
-| Navy | `#1B2A4E` | Primary, headers, hero, footer |
-| Gold | `#D4A24C` | CTAs, accents, dividers |
-| Cream | `#FAF7EF` | Page background |
+| Brand Green | `#1FA94D` | Primary CTAs, accents, the bright "EXCEL ACADEMY" green |
+| Deep Green | `#0E2F1F` | Headers, hero, footer — the dark "CLARA" wordmark green |
+| Bright Green | `#4FD376` | Hover states, glow |
+| White | `#FFFFFF` | Page background |
+
+Topic accents (course tags): pink, blue, purple, teal, red, emerald.
 
 Typography: Inter (UI) + Playfair Display (headings).
 
@@ -23,6 +28,7 @@ Typography: Inter (UI) + Playfair Display (headings).
 │   ├── css/styles.css      All styles
 │   ├── js/main.js          Mobile menu, fade-in, year stamp
 │   └── img/
+│       ├── logo.png        Clara Excel Academy logo (used in nav)
 │       ├── clara.jpg       Optimised headshot (~56 KB)
 │       └── logos/          Drop client logo PNGs here
 ├── .gitignore
@@ -47,11 +53,10 @@ python -m http.server 8000
 
 ## TODO before going public
 
-- [ ] Replace the placeholder client names in the "Companies" section with Clara's confirmed list.
-- [ ] Add real client logos to `assets/img/logos/` (only after written permission).
+- [ ] Save the Clara Excel Academy logo as `assets/img/logo.png` (the nav has a text fallback until then).
+- [ ] Add real client logos to `assets/img/logos/` and switch the Clients section to render images instead of name tiles.
 - [ ] Replace placeholder testimonial quotes with real, attributed quotes.
-- [ ] Update the email address in the Contact section (currently `claratan@example.com`).
-- [ ] Add a LinkedIn profile URL if Clara wants it linked.
+- [ ] Add a LinkedIn profile URL if Clara wants it linked in the footer.
 - [ ] (Optional) Register a custom domain and add a `CNAME` file at repo root.
 
 ## Contact
