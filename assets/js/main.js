@@ -22,7 +22,7 @@
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   const revealTargets = document.querySelectorAll(
-    '.section-title, .about-card, .service-card, .course-card, .quote-card, .client-grid li, .hero-stats div'
+    '.section-title, .about-card, .service-card, .course-card, .quote-card, .client-grid li, .hero-stats div, .topic-card, .topic-chips li'
   );
   revealTargets.forEach((el) => el.classList.add('reveal'));
 
