@@ -16,3 +16,7 @@ desktop.ini
 # Original large source image (the optimised copy lives in assets/img/clara.jpg)
 /Clara.JPG
 !/assets/img/clara.jpg
+
+# Drop-zone folder for raw logo files before they get renamed/optimised
+# into assets/img/logos/. Don't commit the raw drops.
+/Company logo/
