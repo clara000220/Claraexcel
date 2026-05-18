@@ -556,10 +556,10 @@ ul { padding: 0; margin: 0; list-style: none; }
 /* ---------- Testimonials (real client screenshots) ---------- */
 .testimonials-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);  /* 2x2 layout for readability */
   gap: 22px;
   margin: 2.2rem auto 0;
-  max-width: 1200px;
+  max-width: 1100px;
 }
 .testimonial-card {
   margin: 0;
