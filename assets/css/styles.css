@@ -747,6 +747,12 @@ ul { padding: 0; margin: 0; list-style: none; }
   object-fit: contain;
   display: block;
 }
+/* Per-logo size overrides: some sources are tightly cropped to their content
+   (so they fill the card) while others have built-in margin (so they look
+   tiny). Until we re-export each one consistently, tune the visual weight per
+   card. */
+.client-grid li.logo-tight img { max-width: 72%; max-height: 66%; }
+.client-grid li.logo-loose img { max-width: 98%; max-height: 94%; }
 /* Text fallback shown when the logo PNG is missing */
 .client-grid li .logo-fallback {
   display: none;
