@@ -571,6 +571,175 @@ ul { padding: 0; margin: 0; list-style: none; }
   box-shadow: 0 14px 32px -16px rgba(232,87,154,.45);
 }
 
+/* ---------- Course modules (expandable) ---------- */
+.course-modules {
+  display: grid;
+  gap: 14px;
+  max-width: 920px;
+  margin: 1.4rem auto 0;
+}
+.course-module {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: box-shadow .25s ease, border-color .25s ease, transform .15s ease;
+}
+.course-module:hover { border-color: var(--gold); }
+.course-module[open] {
+  border-color: var(--gold);
+  box-shadow: 0 18px 36px -18px rgba(14,47,31,.35);
+}
+.course-module summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 22px 26px;
+  display: grid;
+  grid-template-columns: minmax(140px, auto) 1fr minmax(180px, auto) 36px;
+  align-items: center;
+  gap: 18px;
+  position: relative;
+  user-select: none;
+}
+.course-module summary::-webkit-details-marker { display: none; }
+.course-module summary::after {
+  content: '+';
+  position: absolute;
+  right: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px; height: 32px;
+  display: grid;
+  place-items: center;
+  background: var(--gold-soft);
+  color: var(--gold);
+  border-radius: 50%;
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1;
+  transition: transform .25s ease, background .25s ease, color .25s ease;
+}
+.course-module[open] summary::after {
+  content: '\2212';  /* en-dash / minus */
+  background: var(--gold);
+  color: #fff;
+  transform: translateY(-50%) rotate(180deg);
+}
+.course-module summary h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.18rem;
+  color: var(--navy);
+  letter-spacing: -.01em;
+}
+.course-module summary .course-tag {
+  justify-self: start;
+}
+.course-module summary .course-duration {
+  font-size: .85rem;
+  color: var(--muted);
+  font-weight: 500;
+  justify-self: end;
+  text-align: right;
+}
+/* Expanded content body */
+.course-body {
+  padding: 4px 26px 24px;
+  border-top: 1px dashed rgba(14,47,31,.12);
+  margin-top: 0;
+}
+.course-body .course-intro {
+  margin: 18px 0 14px;
+  color: var(--ink);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+.course-topics-label {
+  margin: 14px 0 8px;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.course-topics {
+  margin: 0 0 16px;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px 24px;
+}
+.course-topics li {
+  position: relative;
+  padding-left: 22px;
+  color: var(--ink);
+  font-size: .95rem;
+  line-height: 1.5;
+}
+.course-topics li::before {
+  content: '\2713'; /* check mark */
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--gold);
+  font-weight: 700;
+}
+.course-outcome {
+  margin: 14px 0 0;
+  padding: 14px 16px;
+  background: var(--cream-warm);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 8px 8px 0;
+  font-size: .95rem;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+/* Feature variant for the Agentic AI module */
+.course-module-feature {
+  background: linear-gradient(160deg, #fff 0%, rgba(232,87,154,.05) 100%);
+  border-color: rgba(232,87,154,.35);
+}
+.course-module-feature:hover,
+.course-module-feature[open] {
+  border-color: var(--c-pink);
+  box-shadow: 0 18px 36px -18px rgba(232,87,154,.5);
+}
+.course-module-feature summary::after {
+  background: rgba(232,87,154,.15);
+  color: var(--c-pink);
+}
+.course-module-feature[open] summary::after { background: var(--c-pink); color: #fff; }
+.course-module-feature .course-outcome { border-left-color: var(--c-pink); }
+.course-module-feature .course-topics-label { color: var(--c-pink); }
+.course-module-feature .course-topics li::before { color: var(--c-pink); }
+
+/* Smooth open animation */
+.course-module[open] .course-body { animation: course-open .35s ease both; }
+@keyframes course-open {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile: stack module summary, single-column topics */
+@media (max-width: 720px) {
+  .course-module summary {
+    grid-template-columns: 1fr 36px;
+    gap: 8px 18px;
+  }
+  .course-module summary .course-tag { grid-column: 1; }
+  .course-module summary h3 { grid-column: 1; }
+  .course-module summary .course-duration {
+    grid-column: 1;
+    justify-self: start;
+    text-align: left;
+  }
+  .course-module summary::after { right: 16px; }
+  .course-body { padding: 4px 18px 20px; }
+  .course-topics { grid-template-columns: 1fr; gap: 8px; }
+}
+
 /* ---------- Sections ---------- */
 .section {
   padding-block: clamp(72px, 10vw, 120px);
