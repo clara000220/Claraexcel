@@ -65,6 +65,34 @@
   }
 
   // -------------------------------------------------------------------
+  // Animation: sequential "spotlight sweep" through course modules.
+  // When the #courses section enters view, each module briefly pulses
+  // (gold ring + subtle lift) in turn, drawing the eye down the list.
+  // -------------------------------------------------------------------
+  const coursesSection = document.getElementById('courses');
+  if (coursesSection && courseModules.length && 'IntersectionObserver' in window) {
+    const reducedC = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const sweepObs = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !entry.target.dataset.sweptOnce && !reducedC) {
+          entry.target.dataset.sweptOnce = 'true';
+          // Wait a moment so the stagger fade-in has time to start
+          setTimeout(() => {
+            courseModules.forEach((m, i) => {
+              setTimeout(() => {
+                m.classList.add('pulse-once');
+                setTimeout(() => m.classList.remove('pulse-once'), 800);
+              }, i * 360);
+            });
+          }, 350);
+          sweepObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    sweepObs.observe(coursesSection);
+  }
+
+  // -------------------------------------------------------------------
   // Animation: confetti burst when the Testimonials section appears
   // -------------------------------------------------------------------
   const testimonials = document.getElementById('testimonials');
