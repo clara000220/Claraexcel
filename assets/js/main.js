@@ -121,6 +121,44 @@
   }
 
   // -------------------------------------------------------------------
+  // Animation: count-up for hero stats (3,000+ / 100+ / 10+)
+  // Reads data-counter-target / data-counter-suffix / data-counter-comma.
+  // -------------------------------------------------------------------
+  const heroCounters = document.querySelectorAll('.hero-stats strong[data-counter-target]');
+  if (heroCounters.length && 'IntersectionObserver' in window) {
+    const reducedH = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const animateCount = (el) => {
+      const target = parseInt(el.dataset.counterTarget, 10);
+      const suffix = el.dataset.counterSuffix || '';
+      const useComma = el.dataset.counterComma === 'true';
+      const final = (useComma ? target.toLocaleString('en-US') : target) + suffix;
+      if (reducedH || !target) { el.textContent = final; return; }
+      const duration = 1700;
+      const start = performance.now();
+      const tick = (now) => {
+        const t = Math.min(1, (now - start) / duration);
+        const eased = 1 - Math.pow(1 - t, 3);
+        const v = Math.round(eased * target);
+        el.textContent = (useComma ? v.toLocaleString('en-US') : v) + suffix;
+        if (t < 1) requestAnimationFrame(tick);
+        else el.textContent = final;
+      };
+      requestAnimationFrame(tick);
+    };
+    const hObs = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !entry.target.dataset.counted) {
+          entry.target.dataset.counted = 'true';
+          // small delay so the page settles before numbers start spinning
+          setTimeout(() => animateCount(entry.target), 250);
+          hObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    heroCounters.forEach((el) => hObs.observe(el));
+  }
+
+  // -------------------------------------------------------------------
   // Animation: count-up for methodology micro-stats (65 / 25 / 10)
   // -------------------------------------------------------------------
   const counters = document.querySelectorAll('.micro-stats strong');

@@ -282,29 +282,62 @@ ul { padding: 0; margin: 0; list-style: none; }
   margin: 0 0 2rem;
   line-height: 1.55;
 }
+/* Hero stat tiles — bolder & more obvious, with green glow */
 .hero-stats {
-  display: flex;
-  gap: clamp(20px, 3vw, 36px);
-  margin-bottom: 2.2rem;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin: 1.6rem 0 2.2rem;
+  max-width: 560px;
 }
-.hero-stats div {
-  display: flex; flex-direction: column;
-  border-left: 2px solid var(--gold);
-  padding-left: 14px;
+.hero-stats .stat-tile {
+  position: relative;
+  background: linear-gradient(140deg, rgba(31,169,77,.16) 0%, rgba(79,211,118,.04) 100%);
+  border: 1px solid rgba(79,211,118,.45);
+  border-radius: 14px;
+  padding: 18px 16px 14px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.hero-stats .stat-tile::before {
+  content: "";
+  position: absolute;
+  inset: -40% 50% auto auto;
+  width: 140%; height: 140%;
+  background: radial-gradient(ellipse at top right, rgba(79,211,118,.22), transparent 60%);
+  pointer-events: none;
+}
+.hero-stats .stat-tile:hover {
+  transform: translateY(-3px);
+  border-color: rgba(79,211,118,.85);
+  box-shadow: 0 18px 38px -18px rgba(31,169,77,.55);
 }
 .hero-stats strong {
   font-family: var(--font-display);
-  font-size: clamp(1.6rem, 2.6vw, 2rem);
-  color: var(--gold);
+  font-size: clamp(1.9rem, 3.2vw, 2.6rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   line-height: 1;
+  letter-spacing: -.02em;
+  text-shadow: 0 0 22px rgba(79,211,118,.35);
+  position: relative;
 }
 .hero-stats span {
-  font-size: .82rem;
-  letter-spacing: .08em;
+  font-size: .72rem;
+  letter-spacing: .14em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.72);
-  margin-top: 6px;
+  color: rgba(255,255,255,.85);
+  margin-top: 8px;
+  font-weight: 600;
+  position: relative;
+}
+@media (max-width: 640px) {
+  .hero-stats { grid-template-columns: 1fr; max-width: 340px; }
 }
 .hero-ctas {
   display: flex;
@@ -340,6 +373,7 @@ ul { padding: 0; margin: 0; list-style: none; }
   display: inline-block;
 }
 .dot-gold { background: var(--gold); }
+.dot-blue { background: var(--c-blue); }
 .dot-pink { background: var(--c-pink); }
 .dot-teal { background: var(--c-teal); }
 
