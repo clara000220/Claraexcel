@@ -553,6 +553,86 @@ ul { padding: 0; margin: 0; list-style: none; }
   border-radius: 999px;
 }
 
+/* ---------- Quick feedback strip (short text quotes) ---------- */
+.quick-feedback {
+  margin: 3.6rem auto 0;
+  max-width: 1100px;
+  text-align: center;
+}
+.quick-feedback h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--navy);
+  margin: 0 0 .35rem;
+  letter-spacing: -.01em;
+}
+.quick-feedback-sub {
+  color: var(--muted);
+  font-size: .92rem;
+  margin: 0 0 1.6rem;
+}
+.feedback-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.feedback-quote {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--gold);
+  border-radius: 12px;
+  padding: 18px 20px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+  position: relative;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.feedback-quote:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px -14px rgba(14,47,31,.3);
+}
+.feedback-quote blockquote {
+  margin: 0;
+  font-size: .96rem;
+  color: var(--ink);
+  line-height: 1.5;
+  font-style: italic;
+}
+.feedback-quote .feedback-translation {
+  display: block;
+  margin-top: 6px;
+  font-style: normal;
+  font-size: .82rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+.feedback-quote cite {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-style: normal;
+  font-size: .76rem;
+  color: var(--muted);
+  letter-spacing: .03em;
+  border-top: 1px dashed rgba(14,47,31,.14);
+  padding-top: 10px;
+  margin-top: auto;
+}
+.feedback-company {
+  font-weight: 700;
+  color: var(--navy);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+@media (max-width: 900px) {
+  .feedback-strip { grid-template-columns: 1fr; max-width: 540px; margin: 0 auto; }
+}
+
 /* ---------- Testimonials (real client screenshots) ---------- */
 .testimonials-grid {
   display: grid;
