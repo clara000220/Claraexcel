@@ -358,11 +358,11 @@ ul { padding: 0; margin: 0; list-style: none; }
 .photo-frame {
   width: clamp(220px, 28vw, 340px);
   aspect-ratio: 1 / 1.18;
+  /* sits straight — earlier -1.5deg tilt removed at user request */
   border-radius: 26px;
   overflow: hidden;
   border: 3px solid var(--gold);
   box-shadow: var(--shadow-lg), 0 0 0 14px rgba(31,169,77,.12);
-  transform: rotate(-1.5deg);
   background: var(--navy-soft);
 }
 .photo-frame img {
@@ -512,6 +512,57 @@ ul { padding: 0; margin: 0; list-style: none; }
   padding: 5px 10px;
   border-radius: 999px;
 }
+
+/* ---------- Apps band (Tools you'll master) ---------- */
+.apps-band {
+  background: var(--cream-warm);
+  padding-block: clamp(60px, 7vw, 96px);
+  position: relative;
+}
+.apps-band .section-sub {
+  max-width: 720px;
+  margin-bottom: 2.4rem;
+}
+.apps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.app-tile {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 22px 18px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  box-shadow: 0 2px 10px rgba(14,47,31,.05);
+}
+.app-tile:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold);
+  box-shadow: 0 14px 30px -14px rgba(31,169,77,.35);
+}
+.app-tile img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  display: block;
+}
+.app-tile span {
+  font-weight: 600;
+  font-size: .92rem;
+  color: var(--navy);
+  letter-spacing: .01em;
+}
+@media (max-width: 900px) { .apps-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 600px) { .apps-grid { grid-template-columns: repeat(2, 1fr); } }
 
 /* feature course card */
 .course-card-feature {
