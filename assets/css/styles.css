@@ -804,6 +804,9 @@ ul { padding: 0; margin: 0; list-style: none; }
    card. */
 .client-grid li.logo-tight img { max-width: 72%; max-height: 66%; }
 .client-grid li.logo-loose img { max-width: 98%; max-height: 94%; }
+/* Push the logo to the top of its card so a centred look isn't achieved
+   by leaving big whitespace above (used for Misumi, CSCEC, etc.). */
+.client-grid li.logo-up { align-items: start; padding-top: 12px; }
 /* Text fallback shown when the logo PNG is missing */
 .client-grid li .logo-fallback {
   display: none;
