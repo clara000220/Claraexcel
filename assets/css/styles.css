@@ -1355,26 +1355,9 @@ ul { padding: 0; margin: 0; list-style: none; }
   100% { box-shadow: 0 0 0 0 rgba(232,87,154,0); transform: translateY(0) scale(1); }
 }
 
-/* Shimmer effect on the Agentic AI feature module so it draws the eye */
+/* Static pink-tinted styling on the Agentic AI feature module
+   (continuous shimmer removed per user request). */
 .course-module-feature { position: relative; }
-.course-module-feature::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  background: linear-gradient(105deg, transparent 30%, rgba(232,87,154,.18) 50%, transparent 70%);
-  background-size: 220% 100%;
-  background-position: 200% 0;
-  animation: feature-shimmer 6s ease-in-out infinite;
-  z-index: 0;
-}
-.course-module-feature > * { position: relative; z-index: 1; }
-@keyframes feature-shimmer {
-  0%   { background-position: 200% 0; }
-  60%  { background-position: -120% 0; }
-  100% { background-position: -120% 0; }
-}
 
 /* Pulse on the topic flag (NEW FOR 2026) */
 .topic-flag {
