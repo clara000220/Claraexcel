@@ -446,6 +446,30 @@ ul { padding: 0; margin: 0; list-style: none; }
   background: var(--gold-soft);
   color: var(--navy);
   margin-bottom: .4rem;
+  padding: 8px;
+  box-sizing: border-box;
+}
+.topic-icon img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+/* Multi-logo strip (e.g. ChatGPT + Claude + Gemini in the AI card) */
+.topic-icon-stack {
+  width: auto;
+  min-width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+}
+.topic-icon-stack img {
+  width: 32px;
+  height: 32px;
 }
 .topic-card.topic-sheets .topic-icon { background: rgba(31,111,181,.14); color: var(--c-blue); }
 .topic-card.topic-ai .topic-icon { background: rgba(232,87,154,.14); color: var(--c-pink); }
