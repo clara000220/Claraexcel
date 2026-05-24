@@ -1013,6 +1013,53 @@ ul { padding: 0; margin: 0; list-style: none; }
   color: var(--navy);
   font-family: var(--font-display);
 }
+/* Certifications strip — sits below the about-grid */
+.cert-strip {
+  margin-top: clamp(40px, 5vw, 60px);
+  text-align: center;
+}
+.cert-eyebrow {
+  font-size: .78rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+  margin: 0 0 1.2rem;
+}
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 1080px;
+}
+.cert-item {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform .25s ease, box-shadow .25s ease;
+  box-shadow: 0 4px 14px rgba(14,47,31,.08);
+}
+.cert-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 32px -16px rgba(14,47,31,.3);
+}
+.cert-item a {
+  display: block;
+  line-height: 0;
+}
+.cert-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+@media (max-width: 820px) {
+  .cert-grid { grid-template-columns: 1fr; max-width: 520px; }
+}
+
 .about-card .method {
   font-family: var(--font-display);
   font-size: 1.6rem;
