@@ -183,6 +183,86 @@ ul { padding: 0; margin: 0; list-style: none; }
   letter-spacing: .04em;
 }
 
+/* ---------- Social media buttons (rounded squares) ---------- */
+.social-strip {
+  margin-top: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .7rem;
+}
+.social-strip-label {
+  font-size: .74rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: rgba(255,255,255,.85);
+  margin: 0;
+}
+.social-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.social-link {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  transition: transform .22s ease, box-shadow .22s ease, filter .22s ease;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+}
+.social-link svg {
+  width: 22px;
+  height: 22px;
+}
+.social-link:hover {
+  transform: translateY(-3px) scale(1.06);
+  box-shadow: 0 16px 28px -10px rgba(0,0,0,.5);
+  filter: brightness(1.08);
+}
+.social-link:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+/* Brand colours */
+.social-linkedin   { background: #0a66c2; }
+.social-instagram  { background: radial-gradient(circle at 30% 110%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%); }
+.social-tiktok     { background: #010101; }
+.social-tiktok::before, .social-tiktok::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+.social-tiktok::before { box-shadow: inset 1px 1px 0 0 #25f4ee; }
+.social-tiktok::after  { box-shadow: inset -1px -1px 0 0 #fe2c55; }
+.social-youtube    { background: #ff0000; }
+.social-whatsapp   { background: #25d366; }
+.social-xhs        { background: #ff2442; }
+.social-xhs .xhs-text {
+  color: #fff;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+}
+
+/* Footer variant — compact and white-tinted background */
+.foot-social {
+  margin-top: 18px;
+}
+
 .nav-links {
   display: flex;
   align-items: center;
