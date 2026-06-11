@@ -21,6 +21,25 @@
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  // -------------------------------------------------------------------
+  // Floating social dock: tuck-away + re-open
+  // -------------------------------------------------------------------
+  const fab = document.querySelector('.social-fab');
+  const fabToggle = document.querySelector('.social-fab-toggle');
+  const fabReopen = document.querySelector('.social-fab-reopen');
+  if (fab && fabToggle && fabReopen) {
+    const setHidden = (hidden) => {
+      fab.classList.toggle('is-hidden', hidden);
+      fabReopen.classList.toggle('is-visible', hidden);
+      try { localStorage.setItem('socialFabHidden', hidden ? '1' : '0'); } catch (_) {}
+    };
+    fabToggle.addEventListener('click', () => setHidden(true));
+    fabReopen.addEventListener('click', () => setHidden(false));
+    try {
+      if (localStorage.getItem('socialFabHidden') === '1') setHidden(true);
+    } catch (_) {}
+  }
+
   const revealTargets = document.querySelectorAll(
     '.section-title, .about-card, .service-card, .course-card, .quote-card, .client-grid li, .hero-stats div, .topic-card, .topic-chips li, .testimonial-card, .feedback-quote, .app-tile'
   );

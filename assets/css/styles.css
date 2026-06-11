@@ -263,6 +263,119 @@ ul { padding: 0; margin: 0; list-style: none; }
   margin-top: 18px;
 }
 
+/* ---------- Floating social-media dock (right edge) ---------- */
+.social-fab {
+  position: fixed;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 60;
+  padding: 12px 8px;
+  background: rgba(14, 47, 31, 0.86);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  border: 1px solid rgba(79, 211, 118, 0.32);
+  border-radius: 22px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+  transition: opacity .35s ease, transform .35s ease, right .35s ease;
+}
+.social-fab .social-links {
+  flex-direction: column;
+  gap: 8px;
+}
+.social-fab .social-link {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+}
+.social-fab .social-link svg {
+  width: 20px;
+  height: 20px;
+}
+.social-fab .social-xhs .xhs-text {
+  font-size: .62rem;
+}
+/* Tiny "tuck away" button at the top of the dock */
+.social-fab-toggle {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid rgba(79, 211, 118, 0.45);
+  background: var(--navy);
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  transition: background .2s ease, color .2s ease;
+}
+.social-fab-toggle:hover {
+  background: var(--gold);
+  color: var(--navy);
+}
+/* Hidden state */
+.social-fab.is-hidden {
+  opacity: 0;
+  transform: translateY(-50%) translateX(110%);
+  pointer-events: none;
+}
+/* Re-open pill (only shown once dock is hidden) */
+.social-fab-reopen {
+  position: fixed;
+  right: 16px;
+  bottom: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: var(--gold);
+  color: var(--navy);
+  cursor: pointer;
+  display: none;
+  place-items: center;
+  z-index: 60;
+  box-shadow: 0 12px 28px rgba(31,169,77,.45);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.social-fab-reopen:hover {
+  transform: scale(1.08);
+  box-shadow: 0 16px 36px rgba(31,169,77,.6);
+}
+.social-fab-reopen.is-visible {
+  display: grid;
+}
+
+/* Mobile: horizontal strip at the bottom instead of side-rail */
+@media (max-width: 720px) {
+  .social-fab {
+    top: auto;
+    bottom: 12px;
+    right: 50%;
+    transform: translateX(50%);
+    padding: 8px 12px;
+    border-radius: 999px;
+  }
+  .social-fab.is-hidden {
+    transform: translateX(50%) translateY(140%);
+  }
+  .social-fab .social-links {
+    flex-direction: row;
+    gap: 6px;
+  }
+  .social-fab .social-link {
+    width: 38px;
+    height: 38px;
+    border-radius: 11px;
+  }
+  .social-fab-toggle {
+    top: -10px;
+  }
+}
+
 .nav-links {
   display: flex;
   align-items: center;
