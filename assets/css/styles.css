@@ -249,6 +249,8 @@ ul { padding: 0; margin: 0; list-style: none; }
 .social-youtube    { background: #ff0000; }
 .social-whatsapp   { background: #25d366; }
 .social-xhs        { background: #ff2442; }
+.social-academy    { background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); color: var(--navy); }
+.social-academy svg { color: var(--navy); }
 .social-xhs .xhs-text {
   color: #fff;
   font-size: .68rem;
@@ -974,6 +976,75 @@ ul { padding: 0; margin: 0; list-style: none; }
   background: linear-gradient(160deg, #fff 0%, rgba(232,87,154,.06) 100%);
   border-color: rgba(232,87,154,.35);
   box-shadow: 0 14px 32px -16px rgba(232,87,154,.45);
+}
+
+/* ---------- Self-paced learning callout (links to claraexcelacademy.com) ---------- */
+.self-paced-callout {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  max-width: 920px;
+  margin: 0 auto 1.4rem;
+  padding: 18px 22px;
+  background: linear-gradient(135deg, var(--gold-soft) 0%, #fff 100%);
+  border: 1px solid rgba(31,169,77,.4);
+  border-radius: 14px;
+  text-decoration: none;
+  color: var(--navy);
+  box-shadow: 0 6px 18px rgba(14,47,31,.08);
+  transition: transform .2s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.self-paced-callout:hover {
+  transform: translateY(-3px);
+  border-color: var(--gold);
+  box-shadow: 0 16px 30px -14px rgba(31,169,77,.45);
+}
+.self-paced-icon {
+  flex: 0 0 auto;
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  background: var(--navy);
+  color: var(--gold-light);
+  display: grid;
+  place-items: center;
+}
+.self-paced-text {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.self-paced-text strong {
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  color: var(--navy);
+  letter-spacing: -.01em;
+}
+.self-paced-text span {
+  font-size: .9rem;
+  color: var(--ink);
+  line-height: 1.45;
+}
+.self-paced-text em {
+  font-style: normal;
+  color: var(--gold);
+  font-weight: 700;
+  background: rgba(31,169,77,.08);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+.self-paced-arrow {
+  flex: 0 0 auto;
+  font-size: 1.6rem;
+  color: var(--gold);
+  transition: transform .2s ease;
+}
+.self-paced-callout:hover .self-paced-arrow {
+  transform: translateX(4px);
+}
+@media (max-width: 720px) {
+  .self-paced-callout { flex-direction: column; align-items: flex-start; text-align: left; }
+  .self-paced-arrow { align-self: flex-end; }
 }
 
 /* ---------- Course modules (expandable) ---------- */
