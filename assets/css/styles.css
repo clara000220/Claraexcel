@@ -649,13 +649,12 @@ ul { padding: 0; margin: 0; list-style: none; }
   justify-self: center;
 }
 .photo-frame {
-  width: clamp(220px, 28vw, 340px);
-  aspect-ratio: 1 / 1.18;
-  /* sits straight — earlier -1.5deg tilt removed at user request */
-  border-radius: 26px;
+  width: clamp(240px, 30vw, 360px);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
   overflow: hidden;
-  border: 3px solid var(--gold);
-  box-shadow: var(--shadow-lg), 0 0 0 14px rgba(31,169,77,.12);
+  border: 4px solid var(--gold);
+  box-shadow: var(--shadow-lg), 0 0 0 10px rgba(79,211,118,.14), 0 0 0 20px rgba(31,169,77,.08);
   background: var(--navy-soft);
 }
 .photo-frame img {
@@ -926,12 +925,91 @@ ul { padding: 0; margin: 0; list-style: none; }
   .feedback-strip { grid-template-columns: 1fr; max-width: 540px; margin: 0 auto; }
 }
 
+/* ---------- Star-Rated Review Cards ---------- */
+.star-reviews {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin: 1rem 0 3rem;
+}
+.star-review {
+  background: #fff;
+  border-radius: 20px;
+  padding: 34px 28px 28px;
+  box-shadow: 0 4px 18px -8px rgba(14,47,31,.10), 0 1px 3px rgba(14,47,31,.06);
+  border: 1px solid rgba(14,47,31,.06);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: transform .2s ease, box-shadow .25s ease;
+}
+.star-review:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px -14px rgba(14,47,31,.18), 0 2px 5px rgba(14,47,31,.08);
+}
+.star-review .quote-glyph {
+  width: 36px;
+  height: 36px;
+  color: var(--gold);
+  margin-bottom: 14px;
+  flex-shrink: 0;
+}
+.star-quote {
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: var(--ink);
+  font-style: italic;
+  margin: 0 0 1.4rem;
+  flex-grow: 1;
+}
+.star-meta {
+  border-top: 1px solid rgba(14,47,31,.08);
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.star-rating {
+  display: inline-flex;
+  gap: 2px;
+  color: #F5B700;
+}
+.star-rating svg {
+  width: 18px;
+  height: 18px;
+}
+.star-attrib strong {
+  display: block;
+  color: var(--navy);
+  font-size: .95rem;
+  font-weight: 700;
+}
+.star-attrib span {
+  display: block;
+  color: var(--muted);
+  font-size: .86rem;
+  margin-top: 2px;
+}
+@media (max-width: 900px) {
+  .star-reviews { grid-template-columns: 1fr; max-width: 540px; margin-left: auto; margin-right: auto; }
+}
+
+.testimonials-subtitle {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 1.15rem;
+  margin: 2.6rem 0 0.4rem;
+  text-align: center;
+  letter-spacing: -0.01em;
+}
+
 /* ---------- Testimonials (real client screenshots) ---------- */
 .testimonials-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);  /* 2x2 layout for readability */
   gap: 22px;
-  margin: 2.2rem auto 0;
+  margin: 1.4rem auto 0;
   max-width: 1100px;
 }
 .testimonial-card {
@@ -1588,6 +1666,86 @@ ul { padding: 0; margin: 0; list-style: none; }
 }
 .client-note a:hover { color: #fff; }
 
+/* ---------- Logo Carousel (auto-scrolling marquee) ---------- */
+.logo-carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 10px 0 4px;
+  margin: 0 0 1.8rem;
+  /* Fade the edges so logos appear/disappear smoothly */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+}
+.logo-marquee {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  animation: logoScroll 80s linear infinite;
+  will-change: transform;
+}
+.logo-carousel:hover .logo-marquee { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .logo-marquee { animation: none; }
+}
+.logo-marquee li {
+  flex: 0 0 180px;
+  height: 110px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px -6px rgba(0,0,0,.35), 0 2px 4px rgba(0,0,0,.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.logo-marquee li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 30px -10px rgba(0,0,0,.4), 0 4px 8px rgba(0,0,0,.2);
+  z-index: 2;
+}
+.logo-marquee li img {
+  max-width: 88%;
+  max-height: 78%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: grayscale(10%);
+  transition: filter .25s ease;
+}
+.logo-marquee li:hover img { filter: grayscale(0%); }
+.logo-marquee li.logo-tight img { max-width: 70%; max-height: 62%; }
+.logo-marquee li.logo-loose img { max-width: 96%; max-height: 90%; }
+.logo-marquee li.logo-up { align-items: start; padding-top: 14px; }
+.logo-marquee li .logo-fallback {
+  display: none;
+  font-weight: 700;
+  color: var(--navy);
+  text-align: center;
+  font-size: .82rem;
+  padding: 0 6px;
+}
+.logo-marquee li.no-logo .logo-fallback { display: block; }
+
+/* The animation translates by -50% because the JS doubles the list contents.
+   When the first copy has fully scrolled off-screen, the second copy is in
+   exactly the same position the first one started in → seamless loop. */
+@keyframes logoScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (max-width: 720px) {
+  .logo-marquee { animation-duration: 55s; gap: 14px; }
+  .logo-marquee li { flex-basis: 140px; height: 90px; padding: 12px; }
+}
+
 /* ---------- Testimonials ---------- */
 .quote-grid {
   display: grid;
@@ -1663,6 +1821,63 @@ ul { padding: 0; margin: 0; list-style: none; }
 .contact-meta dd { margin: 4px 0 0; color: #fff; font-weight: 500; }
 .contact-meta dd a { color: #fff; border-bottom: 1px solid var(--gold); }
 .contact-meta dd a:hover { color: var(--gold-light); }
+
+/* ---------- CTA Band (Ready to upskill) ---------- */
+.cta-band {
+  background: linear-gradient(135deg, var(--gold) 0%, #189C44 60%, #0F7A35 100%);
+  padding: 44px 0;
+  position: relative;
+  overflow: hidden;
+}
+.cta-band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 50%, rgba(255,255,255,.14) 0, transparent 40%),
+    radial-gradient(circle at 85% 50%, rgba(255,255,255,.08) 0, transparent 45%);
+  pointer-events: none;
+}
+.cta-band-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  position: relative;
+  z-index: 1;
+}
+.cta-band-text h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  color: #fff;
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+  margin: 0 0 .25rem;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+.cta-band-text p {
+  color: rgba(255,255,255,.92);
+  margin: 0;
+  font-size: 1rem;
+}
+.cta-band-actions {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+.btn-white {
+  background: #fff;
+  color: var(--navy);
+  box-shadow: 0 8px 20px -6px rgba(0,0,0,.25);
+}
+.btn-white:hover { background: #F4F8F2; color: var(--navy-dark); }
+
+@media (max-width: 720px) {
+  .cta-band { padding: 32px 0; }
+  .cta-band-inner { flex-direction: column; text-align: center; gap: 20px; }
+  .cta-band-actions { justify-content: center; }
+}
 
 /* ---------- Footer ---------- */
 .site-foot {

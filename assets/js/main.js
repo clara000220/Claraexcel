@@ -22,6 +22,20 @@
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   // -------------------------------------------------------------------
+  // Logo marquee: clone the list so the CSS keyframe can translate by
+  // -50% and loop seamlessly without a visible snap.
+  // -------------------------------------------------------------------
+  const marquee = document.getElementById('logoMarquee');
+  if (marquee) {
+    const items = Array.from(marquee.children);
+    items.forEach((li) => {
+      const clone = li.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      marquee.appendChild(clone);
+    });
+  }
+
+  // -------------------------------------------------------------------
   // Floating social dock: tuck-away + re-open
   // -------------------------------------------------------------------
   const fab = document.querySelector('.social-fab');
